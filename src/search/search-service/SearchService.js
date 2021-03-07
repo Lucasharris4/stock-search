@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { mockProfile } from '../../mocks';
 
-const apiKey = "?apikey=910110bbdc2d1c096e7a78e9c0c19dd2"
 const url = "https://financialmodelingprep.com/api/v3/profile/";
 
 export const getStockByTicker = async (ticker) => {
