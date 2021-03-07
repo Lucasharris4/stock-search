@@ -1,7 +1,8 @@
 import './Search.css';
 import React from 'react';
 import NumberFormat from 'react-number-format';
-// import debounce from 'lodash.debounce';
+import debounce from 'lodash.debounce';
+import { Form, Container } from 'react-bootstrap';
 
 class Search extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ class Search extends React.Component {
       showProfile: false,
       profile: {}
     };
-    // this.getStockByTicker = debounce(nextValue => props.getStockByTicker(nextValue), 1000);
     this.getStockByTicker = props.getStockByTicker;
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputChange = debounce(this.handleInputChange, 1000);
   }
 
   componentDidMount() {
@@ -30,7 +31,6 @@ class Search extends React.Component {
         showProfile: true,
         profile: result.data[0] ? result.data[0] : {}
       });
-      return result;
     } else if (this.mounted) {
       this.setState({
         showProfile: false,
@@ -39,23 +39,31 @@ class Search extends React.Component {
     }
   }
 
+  getSearchBar() {
+    return (
+      <Form className="search">
+        <Form.Label className="search-label">Enter Stock Ticker:</Form.Label>
+        <Form.Control className="search-bar" type="text" name="search" onChange={this.handleInputChange}></Form.Control>
+      </Form>)
+  }
+
   render() {
     if (this.state.profile && this.state.showProfile) {
       return (
-        <>
-          <div className="Search">
-            Enter Stock Ticker: <input className="search" type="text" name="search" onChange={this.handleInputChange} />
-          </div>
-          <StockPrice profile={this.state.profile} />
-        </>
+        <div className="app-header">
+          <Container fluid="sm">
+            {this.getSearchBar()}
+            <StockPrice profile={this.state.profile} />
+          </Container>
+        </div>
       );
     }
     return (
-      <>
-        <div className="Search">
-          Enter Stock Ticker: <input className="search" type="text" name="search" onChange={this.handleInputChange} />
-        </div>
-      </>
+      <div className="app-header">
+        <Container fluid="sm">
+          {this.getSearchBar()}
+        </Container>
+      </div>
     );
   }
 }
@@ -64,7 +72,7 @@ class StockPrice extends React.Component {
 
   render() {
     let className = this.getClassName();
-    return <div>
+    return <div className="profile">
       <h1>{this.props.profile.symbol}</h1>
       <h3>{this.props.profile.companyName}</h3>
       <div>Price: <span><NumberFormat value={this.props.profile.price} displayType={'text'} thousandSeparator={true} prefix={'$'}></NumberFormat></span></div>

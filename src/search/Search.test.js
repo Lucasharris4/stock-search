@@ -29,6 +29,7 @@ test('should make the API call with the entered stock ticker', async () => {
     }
   })
   await waitFor(() => {
+    clock.tick(500);
     expect(searchComponent.getStockByTicker).toHaveBeenCalled();
   })
 });

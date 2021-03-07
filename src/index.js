@@ -1,13 +1,16 @@
 import React from 'react';
-import { Search } from './search/Search'
+import { Search } from './search/Search';
+// import  App  from './App';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { getStockByTicker } from './search/search-service/SearchService';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <App /> */}
     <Search getStockByTicker={getStockByTicker} />
   </React.StrictMode>,
   document.getElementById('root')

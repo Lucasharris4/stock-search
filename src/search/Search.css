@@ -1,6 +1,17 @@
+.app-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+}
+
 .search {
-  width: 100px;
-  height: 20px;
+  margin-bottom: 20px;
+  background-color: #282c34;
+}
+
+.search-label {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .positive {

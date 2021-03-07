@@ -4,9 +4,8 @@ import { mockProfile } from '../../mocks';
 const url = "https://financialmodelingprep.com/api/v3/profile/";
 
 export const getStockByTicker = async (ticker) => {
-    console.log(ticker);
     if (ticker) {
-        return axios.get(url + ticker + apiKey);
+        return axios.get(url + ticker + '?apikey=' + process.env.REACT_APP_API_KEY);
     }
 };
 
