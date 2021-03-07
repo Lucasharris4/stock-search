@@ -1,12 +1,14 @@
 import React from 'react';
-import Search from './search/Search'
+import { Search } from './search/Search'
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { getStockByTicker } from './search/search-service/SearchService';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Search />
+    <Search getStockByTicker={getStockByTicker} />
   </React.StrictMode>,
   document.getElementById('root')
 );
