@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `update .env file
+
+Prior to running the application you must update the .env file located in the root directory with your API key.
+
 ### `npm start`
 
 Runs the app in the development mode.\
