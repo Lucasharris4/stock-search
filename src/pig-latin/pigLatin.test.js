@@ -61,7 +61,12 @@ describe('pigLatin.js', () => {
             });
 
             test('begins with whitespace', () => {
-                const result = pigLatin('something   ');
+                const result = pigLatin('   something');
+                expect(result).toEqual('omethingsay');
+            });
+
+            test('ends with whitespace', () => {
+                const result = pigLatin('   something');
                 expect(result).toEqual('omethingsay');
             });
         })
