@@ -1,6 +1,6 @@
-const vowels = ['a', 'e', 'o', 'i', 'u'];
+const vowels = ['a', 'e', 'o', 'i', 'u', 'y'];
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const specialPrefixArr = ['qu', 'ch', 'th', 'sch', 'thr' ]
+const specialPrefixArr = ['qu', 'ch', 'th', 'sch', 'thr', 'ps' ]
 
 export function pigLatin(input) {
     if (input && typeof input === 'string' && input.trim()) {

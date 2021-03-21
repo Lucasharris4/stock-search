@@ -139,6 +139,13 @@ describe('pigLatin.js', () => {
                     expect(result).toEqual('Eethray');
                 })
             });
+
+            describe('begins with uppercase Psy', () => {
+                test('moves Ps to the back and appends ay', () => {
+                    const result = pigLatin('Psychology');
+                    expect(result).toEqual('Ychologypsay');
+                });
+            })
         })
     });
 });
