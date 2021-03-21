@@ -126,10 +126,17 @@ describe('pigLatin.js', () => {
                 })
             });
 
-            describe('begins wtih lowercase thr', () => {
+            describe('begins with lowercase thr', () => {
                 test(`moves 'thr' to back, appends 'ay`, () => {
                     const result = pigLatin('three');
                     expect(result).toEqual('eethray');
+                })
+            });
+
+            describe('begins with uppercase Thr', () => {
+                test(`moves 'Thr' to back, appends 'ay`, () => {
+                    const result = pigLatin('Three');
+                    expect(result).toEqual('Eethray');
                 })
             });
         })
