@@ -97,6 +97,14 @@ describe('pigLatin.js', () => {
                     expect(result).toEqual('Airchay');
                 });
             })
+
+            describe(`begins with lowercase 'th'`, () => {
+                test(`moves 'th' to back, appends 'ay'`, () => {
+                    const result = pigLatin('this');
+                    expect(result).toEqual('isthay');
+
+                });
+            });
         })
     });
 });
