@@ -90,6 +90,13 @@ describe('pigLatin.js', () => {
                     expect(result).toEqual('airchay');
                 });
             })
+
+            describe('begins with ch uppercase', ()=> {
+                test('moves qu to the back and appends ay', () => {
+                    const result = pigLatin('Chair');
+                    expect(result).toEqual('Airchay');
+                });
+            })
         })
     });
 });
