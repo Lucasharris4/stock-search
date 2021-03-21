@@ -1,6 +1,7 @@
 const vowels = ['a', 'e', 'o', 'u'];
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const specialPrefixArr = ['qu', 'ch', 'th']
+const specialPrefixArr = ['qu', 'ch', 'th' ]
+const specialPrefixThreeCharArr = ['sch'];
 
 export function pigLatin(input) {
     if (input && typeof input === 'string' && input.trim()) {
@@ -35,6 +36,8 @@ export function checkIfNumber(firstChar, input) {
 export function getFirstChar(input) {
     if (specialPrefixArr.includes(input.substring(0, 2))) {
         return input.substring(0, 2);
+    } else if (specialPrefixThreeCharArr.includes(input.substring(0, 3))) {
+        return input.substring(0, 3);
     }
     return input[0]
 }

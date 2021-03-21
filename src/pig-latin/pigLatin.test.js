@@ -111,6 +111,12 @@ describe('pigLatin.js', () => {
                     expect(result).toEqual('Isthay');
                 })
             })
+            describe('begins wtih sch', () => {
+                test(`moves 'sch' to back, appends 'ay`, () => {
+                    const result = pigLatin('schooner');
+                    expect(result).toEqual('oonerschay');
+                })
+            })
         })
     });
 });
