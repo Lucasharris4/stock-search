@@ -1,17 +1,16 @@
 const vowels = ['a', 'e', 'o', 'u'];
 
 export function pigLatin(input) {
-    if (!input || typeof input !== 'string') {
-        return '';
+    if (input && typeof input === 'string' && input.trim()) {
+        input = input.toLowerCase();
+        let pigLatinString = '';
+        const firstChar = input.split('')[0];
+        const inputAfterFirstChar = input.substring(1);
+        pigLatinString += checkIfVowel(firstChar, input);
+        pigLatinString += checkIfConsonant(firstChar, inputAfterFirstChar);
+        return pigLatinString;
     }
-    input = input.trim();
-    input = input.toLowerCase();
-    let pigLatinString = '';
-    const firstChar = input.split('')[0];
-    const inputAfterFirstChar = input.substring(1);
-    pigLatinString += checkIfVowel(firstChar, input);
-    pigLatinString += checkIfConsonant(firstChar, inputAfterFirstChar);
-    return pigLatinString;
+    return '';
 }
 
 export function checkIfVowel(firstChar, wholeString) {
