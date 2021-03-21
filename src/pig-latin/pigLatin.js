@@ -6,8 +6,8 @@ export function pigLatin(input) {
         input = input.toLowerCase();
         input = input.trim();
         let pigLatinString = '';
-        const firstChar = input.split('')[0];
-        const inputAfterFirstChar = input.substring(1);
+        const firstChar = getFirstChar(input);
+        const inputAfterFirstChar = input.substring(firstChar.length);
         pigLatinString += checkIfNumber(firstChar, input);
         pigLatinString += checkIfVowel(firstChar, input);
         pigLatinString += checkIfConsonant(firstChar, inputAfterFirstChar);
@@ -19,10 +19,20 @@ export function pigLatin(input) {
 export function checkIfVowel(firstChar, wholeString) {
     return vowels.includes(firstChar) ? wholeString + 'yay' : '';
 }
+
 export function checkIfConsonant(firstChar, stringAfterFirstChar) {
-    return !vowels.includes(firstChar) && !numbers.includes(firstChar) ? stringAfterFirstChar + firstChar + 'ay' : '';
+    if (!vowels.includes(firstChar) && !numbers.includes(firstChar)) {
+        return stringAfterFirstChar + firstChar + 'ay'
+    }
+    return '';
 }
 
 export function checkIfNumber(firstChar, input) {
     return numbers.includes(firstChar) ? input : '';
+}
+
+export function getFirstChar(input) {
+    const strAsArray = input.split('');
+    let firstChar = strAsArray[0]
+    return firstChar === 'q' ? firstChar += strAsArray[1] : firstChar;
 }

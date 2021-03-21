@@ -69,6 +69,13 @@ describe('pigLatin.js', () => {
                 const result = pigLatin('   something');
                 expect(result).toEqual('omethingsay');
             });
+
+            describe('begins with Qu', ()=> {
+                test('moves qu to the back and appends ay', () => {
+                    const result = pigLatin('queen');
+                    expect(result).toEqual('eenquay');
+                });
+            })
         })
     });
 });
