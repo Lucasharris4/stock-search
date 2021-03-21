@@ -1,21 +1,20 @@
 const vowels = ['a', 'e', 'o', 'i', 'u', 'y'];
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const specialPrefixArr = ['qu', 'ch', 'th', 'sch', 'thr', 'ps' ]
 
 export function pigLatin(input) {
-    if (input && typeof input === 'string' && input.trim()) {
-        input = input.trim();
-        let pigLatinString = '';
+    input = trimInput(input);
+    if (input && !numbers.includes(input[0])) {
         const indexOfFirstVowel = getIndexOfFirstVowel(input.toLowerCase());
         const stringUpToFirstVowel = getStringUpToFirstVowel(input.toLowerCase(), indexOfFirstVowel);
-        const isFirstCharUppercase = input[0].toUpperCase() === input[0];
         const inputAfterFirstChar = input.substring(stringUpToFirstVowel.length);
+        let pigLatinString = '';
         pigLatinString += checkIfNumber(stringUpToFirstVowel, input.toLowerCase());
         pigLatinString += checkIfVowel(stringUpToFirstVowel, input.toLowerCase());
         pigLatinString += checkIfConsonant(stringUpToFirstVowel, inputAfterFirstChar.toLowerCase());
+        const isFirstCharUppercase = input[0].toUpperCase() === input[0];
         return isFirstCharUppercase ? pigLatinString[0].toUpperCase() + pigLatinString.substring(1): pigLatinString;
     }
-    return '';
+    return input;
 }
 
 export function checkIfVowel(firstChar, wholeString) {
@@ -34,7 +33,7 @@ export function checkIfNumber(firstChar, input) {
 }
 
 export function getStringUpToFirstVowel(input, indexOfFirstVowel) {
-    if (specialPrefixArr.includes(input.substring(0, indexOfFirstVowel))) {
+    if (indexOfFirstVowel > 0) {
         return input.substring(0, indexOfFirstVowel);
     } 
     return input[0]
@@ -46,4 +45,11 @@ export function getIndexOfFirstVowel(input) {
         return 2;
     }
     return inputArr.findIndex(char => vowels.includes(char));
+}
+
+export function trimInput(input) {
+    if (input && typeof input === 'string') {
+        return input.trim();
+    }
+    return '';
 }
