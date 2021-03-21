@@ -55,9 +55,9 @@ describe('pigLatin.js', () => {
 
             test('should behave the same if passed a capital letter', () => {
                 let result = pigLatin('HeAdPhOnEs');
-                expect(result).toEqual('eadphoneshay');
+                expect(result).toEqual('Eadphoneshay');
                 result = pigLatin('EaR');
-                expect(result).toEqual('earyay');
+                expect(result).toEqual('Earyay');
             });
 
             test('begins with whitespace', () => {
@@ -70,10 +70,17 @@ describe('pigLatin.js', () => {
                 expect(result).toEqual('omethingsay');
             });
 
-            describe('begins with Qu', ()=> {
+            describe('begins with qu lowercase', ()=> {
                 test('moves qu to the back and appends ay', () => {
                     const result = pigLatin('queen');
                     expect(result).toEqual('eenquay');
+                });
+            })
+
+            describe('begins with Qu uppercase', ()=> {
+                test('moves qu to the back and appends ay', () => {
+                    const result = pigLatin('Queen');
+                    expect(result).toEqual('Eenquay');
                 });
             })
         })

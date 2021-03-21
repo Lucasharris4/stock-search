@@ -3,15 +3,15 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 export function pigLatin(input) {
     if (input && typeof input === 'string' && input.trim()) {
-        input = input.toLowerCase();
         input = input.trim();
         let pigLatinString = '';
-        const firstChar = getFirstChar(input);
+        const firstChar = getFirstChar(input.toLowerCase());
+        const isFirstCharUppercase = input.split('')[0].toUpperCase() === input.split('')[0];
         const inputAfterFirstChar = input.substring(firstChar.length);
-        pigLatinString += checkIfNumber(firstChar, input);
-        pigLatinString += checkIfVowel(firstChar, input);
-        pigLatinString += checkIfConsonant(firstChar, inputAfterFirstChar);
-        return pigLatinString;
+        pigLatinString += checkIfNumber(firstChar, input.toLowerCase());
+        pigLatinString += checkIfVowel(firstChar, input.toLowerCase());
+        pigLatinString += checkIfConsonant(firstChar, inputAfterFirstChar.toLowerCase());
+        return isFirstCharUppercase ? pigLatinString[0].toUpperCase() + pigLatinString.substring(1): pigLatinString;
     }
     return '';
 }
