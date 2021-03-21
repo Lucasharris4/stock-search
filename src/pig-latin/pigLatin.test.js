@@ -102,9 +102,15 @@ describe('pigLatin.js', () => {
                 test(`moves 'th' to back, appends 'ay'`, () => {
                     const result = pigLatin('this');
                     expect(result).toEqual('isthay');
-
                 });
             });
+
+            describe('begins wtih uppercase Th', () => {
+                test(`moves 'Th' to back, appends 'ay`, () => {
+                    const result = pigLatin('This');
+                    expect(result).toEqual('Isthay');
+                })
+            })
         })
     });
 });
