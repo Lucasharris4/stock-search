@@ -4,6 +4,7 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 export function pigLatin(input) {
     if (input && typeof input === 'string' && input.trim()) {
         input = input.toLowerCase();
+        input = input.trim();
         let pigLatinString = '';
         const firstChar = input.split('')[0];
         const inputAfterFirstChar = input.substring(1);

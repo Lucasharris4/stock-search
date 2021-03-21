@@ -59,6 +59,11 @@ describe('pigLatin.js', () => {
                 result = pigLatin('EaR');
                 expect(result).toEqual('earyay');
             });
+
+            test('begins with whitespace', () => {
+                const result = pigLatin('something   ');
+                expect(result).toEqual('omethingsay');
+            });
         })
     });
 });
