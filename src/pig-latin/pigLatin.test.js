@@ -83,6 +83,13 @@ describe('pigLatin.js', () => {
                     expect(result).toEqual('Eenquay');
                 });
             })
+
+            describe('begins with ch lowercase', ()=> {
+                test('moves qu to the back and appends ay', () => {
+                    const result = pigLatin('chair');
+                    expect(result).toEqual('airchay');
+                });
+            })
         })
     });
 });

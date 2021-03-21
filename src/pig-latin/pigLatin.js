@@ -1,12 +1,13 @@
 const vowels = ['a', 'e', 'o', 'u'];
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+const specialPrefixArr = ['qu', 'ch']
 
 export function pigLatin(input) {
     if (input && typeof input === 'string' && input.trim()) {
         input = input.trim();
         let pigLatinString = '';
         const firstChar = getFirstChar(input.toLowerCase());
-        const isFirstCharUppercase = input.split('')[0].toUpperCase() === input.split('')[0];
+        const isFirstCharUppercase = input[0].toUpperCase() === input[0];
         const inputAfterFirstChar = input.substring(firstChar.length);
         pigLatinString += checkIfNumber(firstChar, input.toLowerCase());
         pigLatinString += checkIfVowel(firstChar, input.toLowerCase());
@@ -32,7 +33,8 @@ export function checkIfNumber(firstChar, input) {
 }
 
 export function getFirstChar(input) {
-    const strAsArray = input.split('');
-    let firstChar = strAsArray[0]
-    return firstChar === 'q' ? firstChar += strAsArray[1] : firstChar;
+    if (specialPrefixArr.includes(input.substring(0, 2))) {
+        return input.substring(0, 2);
+    }
+    return input[0]
 }
