@@ -24,6 +24,11 @@ describe('pigLatin.js', () => {
                 const result = pigLatin('      ');
                 expect(result).toEqual('');
             });
+
+            test('should return unchanged if string begins with a number', () => {
+                const result = pigLatin('1way')
+                expect(result).toEqual('1way');
+            })
         });
 
 
